@@ -1,0 +1,160 @@
+1) How to find the maximum occurring character in a given String?
+Write an efficient Java program to return the maximum occurring character in the input string
+e.g., if the input string is "Java" then the function should return 'a'.
+
+using namespace std; 
+  
+char getMaxOccuringChar(char* str) 
+{ 
+    
+    int count[ASCII_SIZE] = {0}; 
+  
+   
+    int len = strlen(str); 
+    int max = 0;  
+    char result;   
+  
+   
+    for (int i = 0; i < len; i++) { 
+        count[str[i]]++; 
+        if (max < count[str[i]]) { 
+            max = count[str[i]]; 
+            result = str[i]; 
+        } 
+    } 
+  
+    return result; 
+} 
+  
+
+int main() 
+{ 
+    char str[] = "sample string"; 
+    cout << "Max occurring character is "
+         << getMaxOccuringChar(str); 
+} ]
+
+*****************************************************************************************************************8
+
+2) How to remove all duplicates from a given string?
+Write a program to remove all the duplicate characters from a given input String e.g. if given
+String is "Java" then output should be "Java". The second or further occurrence of duplicate
+should be removed.
+
+
+using namespace std; 
+  
+char *removeDuplicate(char str[], int n) 
+{ 
+  
+   int index = 0;    
+     
+   
+   for (int i=0; i<n; i++) { 
+         
+    
+     int j;   
+     for (j=0; j<i; j++)  
+        if (str[i] == str[j]) 
+           break; 
+       
+    
+     
+     if (j == i) 
+        str[index++] = str[i]; 
+   } 
+     
+   return str; 
+} 
+  
+
+int main() 
+{ 
+   char str[]= "geeksforgeeks"; 
+   int n = sizeof(str) / sizeof(str[0]); 
+   cout << removeDuplicate(str, n); 
+   return 0; 
+} 
+
+***************************************************************************************************
+
+3) How to print the duplicate characters from the given String?
+Write an efficient Java program to return the duplicate characters from given String, for example
+if given String is "C++" then your program should print "+" Similarly, if input is "Java and
+JavaScript" then your program should print "J", "a" and "v". You can ignore cases for finding
+duplicates.
+
+
+import java.util.Collections;
+ import java.util.HashSet; 
+import java.util.Set;
+ public class DuplicateWordsInString{ public static void main(String[] args) 
+{ 
+String test = "This sentence contains two words, one and two"; 
+Set<String> duplicates = duplicateWords(test); 
+System.out.println("input : " + test); System.out.println("output : " + duplicates); } 
+ @param input String * @return set of duplicate words 
+public static Set<String> duplicateWords(String input)
+{
+ if(input == null || input.isEmpty())
+{ 
+return Collections.emptySet();
+ } 
+Set<String> duplicates = new HashSet<>();
+ String[] words = input.split("\\s+"); 
+Set<String> set = new HashSet<>(); 
+for(String word : words){ if(!set.add(word)){ duplicates.add(word); 
+}
+ } return duplicates;
+ } 
+}
+
+**********************************************************************************************************************************
+
+
+public class StringReverseExample {
+
+    public static void main(String args[]) throws FileNotFoundException, IOException {
+
+        //original string
+        String str = "Sony is going to introduce Internet TV soon";
+        System.out.println("Original String: " + str);
+
+        //reversed string using Stringbuffer
+        String reverseStr = new StringBuffer(str).reverse().toString();
+        System.out.println("Reverse String in Java using StringBuffer: " + reverseStr);
+
+        //iterative method to reverse String in Java
+        reverseStr = reverse(str);
+        System.out.println("Reverse String in Java using Iteration: " + reverseStr);
+
+        //recursive method to reverse String in Java
+        reverseStr = reverseRecursively(str);
+        System.out.println("Reverse String in Java using Recursion: " + reverseStr);
+
+    }
+
+    public static String reverse(String str) {
+        StringBuilder strBuilder = new StringBuilder();
+        char[] strChars = str.toCharArray();
+
+        for (int i = strChars.length - 1; i >= 0; i--) {
+            strBuilder.append(strChars[i]);
+        }
+
+        return strBuilder.toString();
+    }
+
+    public static String reverseRecursively(String str) {
+
+        //base case to handle one char string and empty string
+        if (str.length() < 2) {
+            return str;
+        }
+
+        return reverseRecursively(str.substring(1)) + str.charAt(0);
+
+    }
+}
+
+
